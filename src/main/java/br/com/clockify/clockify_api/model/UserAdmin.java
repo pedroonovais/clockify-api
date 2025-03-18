@@ -1,7 +1,8 @@
 package br.com.clockify.clockify_api.model;
 
-public class User {
+public class UserAdmin {
     private Long id;
+    private Long idCompany;
     private String name;
     private String email;
     private Long cpf;
@@ -9,8 +10,9 @@ public class User {
     private String password;
     private boolean active;
 
-    public User(Long id, String name, String email, Long cpf, Long phone, String password, boolean active) {
+    public UserAdmin(Long id, Long idCompany, String name, String email, Long cpf, Long phone, String password, boolean active) {
         this.id = id;
+        this.idCompany = idCompany;
         this.name = name;
         this.email = email;
         this.cpf = cpf;
@@ -21,6 +23,10 @@ public class User {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getIdCompany() {
+        return idCompany;
     }
 
     public String getName() {
