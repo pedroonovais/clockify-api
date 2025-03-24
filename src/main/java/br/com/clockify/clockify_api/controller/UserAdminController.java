@@ -2,7 +2,6 @@ package br.com.clockify.clockify_api.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale.Category;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,10 +33,13 @@ public class UserAdminController {
     }
 
     @PostMapping
-    public ResponseEntity<UserAdmin> create(@RequestBody UserAdmin user) {
-        log.info("Cadastrando um novo usuário: " + user.getName());
-        repository.add(user);
-        return ResponseEntity.status(201).body(user);
+    public ResponseEntity<UserAdmin> create(@RequestBody UserAdmin userAdmin) {
+        log.info("Cadastrando um novo usuário: " + userAdmin.getName());
+
+        isValidUserAdmin(userAdmin);
+
+        repository.add(userAdmin);
+        return ResponseEntity.status(201).body(userAdmin);
     }
 
     @GetMapping("{id}")
@@ -64,12 +66,6 @@ public class UserAdminController {
         return userAdmin;
     }
  
-    // //Verifica se o usuário já existe
-    // public boolean exists(Long cpf) {
-    //     return repository.stream()
-    //             .anyMatch(c -> c.getCpf().equals(cpf));
-    // }
-
     public UserAdmin getUserAdmin(Long id) {
         return repository.stream()
                 .filter(c -> c.getId().equals(id))
@@ -79,7 +75,15 @@ public class UserAdminController {
                 );
     }
 
+    private void isValidUserAdmin(UserAdmin userAdmin) {
+        validateCpf(userAdmin.getCpf());
+    }
 
+    private void validateCpf(String cpf) {
+        if (repository.stream().anyMatch(c -> c.getCpf().equals(cpf))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF " + cpf + " ja cadastrado");
+        }
+    }
 
 
 }

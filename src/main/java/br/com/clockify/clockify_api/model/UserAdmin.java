@@ -5,12 +5,12 @@ public class UserAdmin {
     private Long idCompany;
     private String name;
     private String email;
-    private Long cpf;
+    private String cpf;
     private Long phone;
     private String password;
     private boolean active;
 
-    public UserAdmin(Long id, Long idCompany, String name, String email, Long cpf, Long phone, String password, boolean active) {
+    public UserAdmin(Long id, Long idCompany, String name, String email, String cpf, Long phone, String password, boolean active) {
         this.id = id;
         this.idCompany = idCompany;
         this.name = name;
@@ -45,7 +45,7 @@ public class UserAdmin {
         this.email = email;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
