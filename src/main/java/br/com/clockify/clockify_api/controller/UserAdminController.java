@@ -1,12 +1,11 @@
 package br.com.clockify.clockify_api.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,27 +18,26 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.clockify.clockify_api.model.UserAdmin;
+import br.com.clockify.clockify_api.repository.UserAdminRepository;
 
 @RestController
 @RequestMapping("/users-admin")
 public class UserAdminController {
 
     private Logger log = LoggerFactory.getLogger(getClass());
-    private List<UserAdmin> repository = new ArrayList<>();
+    
+    @Autowired
+    private UserAdminRepository repository;
 
     @GetMapping
     public List<UserAdmin> index() {
-        return repository;
+        return repository.findAll();
     }
 
     @PostMapping
-    public ResponseEntity<UserAdmin> create(@RequestBody UserAdmin userAdmin) {
+    public UserAdmin create(@RequestBody UserAdmin userAdmin) {
         log.info("Cadastrando um novo usuário: " + userAdmin.getName());
-
-        isValidUserAdmin(userAdmin);
-
-        repository.add(userAdmin);
-        return ResponseEntity.status(201).body(userAdmin);
+        return repository.save(userAdmin);
     }
 
     @GetMapping("{id}")
@@ -52,38 +50,24 @@ public class UserAdminController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void destroy(@PathVariable Long id) {
         log.info("Apagando userAdmin " + id);
-        repository.remove(getUserAdmin(id));
+        repository.delete(getUserAdmin(id));
     }
 
     @PutMapping("{id}")
     public UserAdmin update(@PathVariable Long id, @RequestBody UserAdmin userAdmin) {
         log.info("Atualizando userAdmin " + id + " " + userAdmin);	
 
-        repository.remove(getUserAdmin(id));
+        getUserAdmin(id);
         userAdmin.setId(id);
-        repository.add(userAdmin);
-
-        return userAdmin;
+        return repository.save(userAdmin);
     }
  
     public UserAdmin getUserAdmin(Long id) {
-        return repository.stream()
-                .filter(c -> c.getId().equals(id))
-                .findFirst()
+        return repository
+                .findById(id)
                 .orElseThrow(
                     () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "UserAdmin " + id + " não encontrado")
                 );
     }
-
-    private void isValidUserAdmin(UserAdmin userAdmin) {
-        validateCpf(userAdmin.getCpf());
-    }
-
-    private void validateCpf(String cpf) {
-        if (repository.stream().anyMatch(c -> c.getCpf().equals(cpf))) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF " + cpf + " ja cadastrado");
-        }
-    }
-
 
 }
