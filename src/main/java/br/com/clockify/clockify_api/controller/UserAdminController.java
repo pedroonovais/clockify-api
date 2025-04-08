@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.clockify.clockify_api.model.UserAdmin;
 import br.com.clockify.clockify_api.repository.UserAdminRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/users-admin")
@@ -35,7 +36,8 @@ public class UserAdminController {
     }
 
     @PostMapping
-    public UserAdmin create(@RequestBody UserAdmin userAdmin) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserAdmin create(@RequestBody @Valid UserAdmin userAdmin) {
         log.info("Cadastrando um novo usuário: " + userAdmin.getName());
         return repository.save(userAdmin);
     }
