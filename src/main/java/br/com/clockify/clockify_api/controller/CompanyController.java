@@ -3,6 +3,8 @@ package br.com.clockify.clockify_api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,12 +28,14 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/company")
 @Slf4j
 @Tag(name = "Company")
+@Cacheable(value = "company")
 public class CompanyController {
 
     @Autowired
     private CompanyRepository repository;
 
     @GetMapping
+    @Cacheable
     @Operation(
         summary = "Listar todas as Empresas",
         description = "Retorna todas as Empresas cadastradas"
@@ -41,6 +45,7 @@ public class CompanyController {
     }
 
     @PostMapping
+    @CacheEvict(allEntries = true)
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(
         summary = "Criar uma nova Empresa",
@@ -62,6 +67,7 @@ public class CompanyController {
     }
 
     @PutMapping("{id}")
+    @CacheEvict(allEntries = true)
     @Operation(
         summary = "Atualizar uma Empresa",
         description = "Atualiza os dados de uma Empresa com base no ID informado"
@@ -74,6 +80,7 @@ public class CompanyController {
     }
 
     @DeleteMapping("{id}")
+    @CacheEvict(allEntries = true)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(
         summary = "Desativar uma Empresa",
