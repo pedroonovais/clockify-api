@@ -2,8 +2,6 @@ package br.com.clockify.clockify_api.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,12 +18,12 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.clockify.clockify_api.model.Admin;
 import br.com.clockify.clockify_api.repository.AdminRepository;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/admin")
+@Slf4j
 public class AdminController {
-
-    private Logger log = LoggerFactory.getLogger(getClass());
     
     @Autowired
     private AdminRepository repository;
@@ -51,8 +49,9 @@ public class AdminController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void destroy(@PathVariable Long id) {
-        log.info("Apagando Admin " + id);
-        repository.delete(getUserAdmin(id));
+        Admin userAdmin = getUserAdmin(id);
+        userAdmin.setActive(false);
+        repository.save(userAdmin);        
     }
 
     @PutMapping("{id}")

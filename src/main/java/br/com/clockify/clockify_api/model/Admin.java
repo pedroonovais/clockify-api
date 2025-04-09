@@ -26,9 +26,6 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "campo idCompany obrigatório")
-    private Long idCompany;
-
     @NotBlank(message = "campo name obrigatório")
     @Size(min = 2, message = "deve ter pelo menos 2 caracteres")
     @Pattern(regexp = "^[A-Z].*", message = "deve começar com maiúscula")
