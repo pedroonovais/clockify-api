@@ -1,5 +1,7 @@
 package br.com.clockify.clockify_api.model;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,12 +28,10 @@ public class UserAdmin {
 
     @NotBlank(message = "campo email obrigatório")
     @Email(message = "email inválido")
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "email inválido")
     private String email;
 
     @NotBlank(message = "campo cpf obrigatório")
-    @Size(min = 11, max = 11, message = "deve ter 11 dígitos")
-    @Pattern(regexp = "^[0-9]{11}$", message = "cpf inválido")
+    @CPF
     private String cpf;
 
     @NotNull(message = "campo phone obrigatório")
@@ -44,8 +44,6 @@ public class UserAdmin {
 
     @NotNull(message = "campo active obrigatório")
     private Boolean active;
-
-    
 
     public Long getId() {
         return id;
