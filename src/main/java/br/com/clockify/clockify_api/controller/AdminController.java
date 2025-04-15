@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.clockify.clockify_api.model.Admin;
 import br.com.clockify.clockify_api.repository.AdminRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,10 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(
         summary = "Criar um novo Admin",
-        description = "Cria e retorna um novo Admin com os dados informados"
+        description = "Cria e retorna um novo Admin com os dados informados",
+        responses = @ApiResponse(
+            responseCode = "400"
+        )
     )
     public Admin create(@RequestBody @Valid Admin userAdmin) {
         log.info("Cadastrando um novo admin: " + userAdmin.getName());

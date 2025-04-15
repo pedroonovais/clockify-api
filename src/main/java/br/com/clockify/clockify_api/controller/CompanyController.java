@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.clockify.clockify_api.model.Company;
 import br.com.clockify.clockify_api.repository.CompanyRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +50,10 @@ public class CompanyController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(
         summary = "Criar uma nova Empresa",
-        description = "Cria e retorna uma nova Empresa com os dados informados"
+        description = "Cria e retorna uma nova Empresa com os dados informados",
+        responses = @ApiResponse(
+            responseCode = "400"
+        )
     )
     public Company create(@RequestBody @Valid Company company) {
         log.info("Cadastrando nova empresa: {}", company.getName());
