@@ -2,6 +2,7 @@ package br.com.clockify.clockify_api.model;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +38,7 @@ public class Admin {
 
     @NotBlank(message = "campo cpf obrigatório")
     @CPF
+    @Column(unique = true)
     private String cpf;
 
     @NotNull(message = "campo phone obrigatório")
