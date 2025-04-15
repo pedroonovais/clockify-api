@@ -1,0 +1,288 @@
+type: collection.insomnia.rest/5.0
+name: Clockify API
+meta:
+  id: wrk_3ae194a482944c43814617a059e9ce46
+  created: 1743367167175
+  modified: 1743367167175
+collection:
+  - name: Admin
+    meta:
+      id: fld_1b630c2a70d341f59471545844ac5733
+      created: 1742340174880
+      modified: 1744207707398
+      sortKey: -1742340174880
+    children:
+      - url: http://localhost:8080/{{ _.path }}
+        name: Index
+        meta:
+          id: req_dc353adf9046456396067d9030c4f2f4
+          created: 1742340184156
+          modified: 1744203077542
+          isPrivate: false
+          sortKey: -1742340184156
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/{{ _.path }}
+        name: Create
+        meta:
+          id: req_4285bab7f68346bc8cff0cc89745f3cf
+          created: 1742340371557
+          modified: 1744203693395
+          isPrivate: false
+          sortKey: -1742077275645
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "João Silva",
+            	"email": "joao.silva@example.com",
+            	"cpf": "43264531844",
+            	"phone": "11987654321",
+            	"password": "senhaSegura123",
+            	"active": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/{{ _.path }}/1
+        name: Get by ID
+        meta:
+          id: req_003a9de158fb42c8833b1c1c7fd88982
+          created: 1742340749892
+          modified: 1744203100923
+          isPrivate: false
+          sortKey: -1742208729900.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/{{ _.path }}/3
+        name: Update
+        meta:
+          id: req_b83e474af5a04d3595943c644245d77b
+          created: 1743367444704
+          modified: 1744207740508
+          isPrivate: false
+          sortKey: -1742077275595
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "name": "João Silva Souza",
+              "email": "joao.silva@example.com",
+              "cpf": 12345678903,
+              "phone": 11987654321,
+              "password": "senhaSegura123",
+              "active": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/{{ _.path }}/3
+        name: Delete
+        meta:
+          id: req_9eb8d305db5f40f79665abdca8333ea0
+          created: 1743367499032
+          modified: 1744203117430
+          isPrivate: false
+          sortKey: -1742143002772.75
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      path: admin
+  - name: Company
+    meta:
+      id: fld_02d4b8b77b29486799defccb5890366f
+      created: 1744207481585
+      modified: 1744207489316
+      sortKey: -1742340174830
+    children:
+      - url: http://localhost:8080/{{ _.path }}
+        name: Index
+        meta:
+          id: req_a34274b1426448f9ba4e4ab6772462b9
+          created: 1744207481587
+          modified: 1744207481587
+          isPrivate: false
+          sortKey: -1742340184156
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/{{ _.path }}
+        name: Create
+        meta:
+          id: req_3f2974e121434e129b147e828e81723e
+          created: 1744207481588
+          modified: 1744207633015
+          isPrivate: false
+          sortKey: -1742077275645
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "name": "Clockify Tech Solutions",
+              "cnpj": "29.942.122/0001-89",
+              "address": "Avenida Paulista, 1000 - São Paulo, SP",
+              "email": "contato@clockify.com.br",
+              "active": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/{{ _.path }}/1
+        name: Get by ID
+        meta:
+          id: req_61bda20d5f8a40b7b2c7d755f6683e24
+          created: 1744207481589
+          modified: 1744207481589
+          isPrivate: false
+          sortKey: -1742208729900.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/{{ _.path }}/1
+        name: Delete
+        meta:
+          id: req_75c4d78cd183464ea135c22aea4e6d3b
+          created: 1744207481590
+          modified: 1744207649632
+          isPrivate: false
+          sortKey: -1742143002772.75
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/{{ _.path }}/1
+        name: Update
+        meta:
+          id: req_bc255c5888c943299af8094c21e66456
+          created: 1744207481590
+          modified: 1744207694090
+          isPrivate: false
+          sortKey: -1742077275595
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "name": "Clockify Tech Solutions LTDA",
+              "cnpj": "29.942.122/0001-89",
+              "address": "Rua Faria Lima, 1500 - São Paulo, SP",
+              "email": "suporte@clockify.com.br",
+              "active": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      path: company
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_f2478290769744978253f6a949c251fa
+    created: 1742340142986
+    modified: 1742340142986
+environments:
+  name: Base Environment
+  meta:
+    id: env_9880405603f44039882e39502fe97fe4
+    created: 1742340142984
+    modified: 1742340142984
+    isPrivate: false
