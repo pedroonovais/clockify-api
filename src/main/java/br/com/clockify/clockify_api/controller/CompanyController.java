@@ -29,14 +29,13 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/company")
 @Slf4j
 @Tag(name = "Company")
-@Cacheable(value = "company")
 public class CompanyController {
 
     @Autowired
     private CompanyRepository repository;
 
     @GetMapping
-    @Cacheable
+    @Cacheable("companies")
     @Operation(
         summary = "Listar todas as Empresas",
         description = "Retorna todas as Empresas cadastradas"

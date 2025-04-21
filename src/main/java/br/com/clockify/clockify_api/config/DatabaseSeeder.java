@@ -45,56 +45,29 @@ public class DatabaseSeeder {
         adminRepository.saveAll(admins);
 
         var companies = List.of(
-            Company.builder()
-                .name("B2C")
-                .cnpj("12.345.678/0001-95")
-                .address("Av. Brasil, 1000")
-                .email("b2c@b2c.srv.br")
-                .active(true)
-                .build(),
-            Company.builder()
-                .name("FIAP")
-                .cnpj("50.219.813/0001-45")
-                .address("Av. Brasil, 2000")
-                .email("fiap@fiap.srv.br")
-                .active(true)
-                .build(),
-            Company.builder()
-                .name("TechNova")
-                .cnpj("38.780.278/0001-00")
-                .address("Rua das Inovações, 123")
-                .email("contato@technova.com")
-                .active(true)
-                .build(),
-            Company.builder()
-                .name("InovaCorp")
-                .cnpj("94.261.957/0001-35")
-                .address("Av. Paulista, 1500")
-                .email("inova@corp.com")
-                .active(true)
-                .build(),
-            Company.builder()
-                .name("AlphaTech")
-                .cnpj("90.216.066/0001-06")
-                .address("Rua Alfa, 321")
-                .email("suporte@alphatech.com")
-                .active(true)
-                .build(),
-            Company.builder()
-                .name("Beta Solutions")
-                .cnpj("25.999.066/0001-68")
-                .address("Av. Soluções, 456")
-                .email("contato@betasolutions.com")
-                .active(true)
-                .build(),
-            Company.builder()
-                .name("NextGen TI")
-                .cnpj("56.515.415/0001-52")
-                .address("Rua do Futuro, 789")
-                .email("nextgen@ti.com")
-                .active(true)
-                .build()
-            );
+            Company.builder().name("B2C").cnpj("57.029.594/0001-80").address("Av. Brasil, 1000").email("b2c@b2c.srv.br").active(true).build(),
+            Company.builder().name("FIAP").cnpj("26.426.560/0001-04").address("Av. Brasil, 2000").email("fiap@fiap.srv.br").active(true).build(),
+            Company.builder().name("TechNova").cnpj("10.492.760/0001-17").address("Rua das Inovações, 123").email("contato@technova.com").active(true).build(),
+            Company.builder().name("InovaCorp").cnpj("73.614.391/0001-08").address("Av. Paulista, 1500").email("inova@corp.com").active(true).build(),
+            Company.builder().name("AlphaTech").cnpj("94.994.500/0001-30").address("Rua Alfa, 321").email("suporte@alphatech.com").active(true).build(),
+            Company.builder().name("Beta Solutions").cnpj("19.763.087/0001-87").address("Av. Soluções, 456").email("contato@betasolutions.com").active(true).build(),
+            Company.builder().name("NextGen TI").cnpj("07.213.740/0001-55").address("Rua do Futuro, 789").email("nextgen@ti.com").active(true).build(),
+            Company.builder().name("SmartSys").cnpj("56.391.304/0001-81").address("Rua Inteligente, 890").email("suporte@smartsys.com").active(true).build(),
+            Company.builder().name("CloudWave").cnpj("36.711.872/0001-05").address("Av. das Nuvens, 321").email("contato@cloudwave.io").active(true).build(),
+            Company.builder().name("GreenData").cnpj("63.344.217/0001-39").address("Av. Sustentável, 654").email("info@greendata.com.br").active(true).build(),
+            Company.builder().name("DataBridge").cnpj("47.550.930/0001-82").address("Rua da Conexão, 777").email("contato@databridge.com").active(true).build(),
+            Company.builder().name("VisionX").cnpj("92.416.039/0001-02").address("Av. Visão, 101").email("hello@visionx.ai").active(true).build(),
+            Company.builder().name("CyberLink").cnpj("61.140.246/0001-53").address("Rua Digital, 303").email("contato@cyberlink.tech").active(true).build(),
+            Company.builder().name("PixelWare").cnpj("66.155.308/0001-14").address("Rua dos Pixels, 1122").email("support@pixelware.com").active(true).build(),
+            Company.builder().name("InfoMatrix").cnpj("19.234.443/0001-75").address("Av. da Informação, 909").email("matriz@infomatrix.net").active(true).build(),
+            Company.builder().name("NeuroSoft").cnpj("65.316.066/0001-30").address("Rua Neural, 100").email("contato@neurosoft.ai").active(true).build(),
+            Company.builder().name("BrightCode").cnpj("48.768.562/0001-06").address("Av. Codificação, 455").email("dev@brightcode.dev").active(true).build(),
+            Company.builder().name("DeepLogic").cnpj("03.287.035/0001-41").address("Rua Lógica, 888").email("contact@deeplogic.com").active(true).build(),
+            Company.builder().name("QuantumX").cnpj("00.265.168/0001-29").address("Av. Quântica, 2020").email("quantum@xcorp.tech").active(true).build(),
+            Company.builder().name("VirtuaSys").cnpj("60.521.105/0001-18").address("Rua Virtual, 313").email("hello@virtuasys.com").active(true).build()
+        );
+
+
 
         companyRepository.saveAll(companies);
     }
