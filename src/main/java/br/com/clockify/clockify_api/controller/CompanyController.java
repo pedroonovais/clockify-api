@@ -2,9 +2,12 @@ package br.com.clockify.clockify_api.controller;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.clockify.clockify_api.model.Company;
+import br.com.clockify.clockify_api.model.CompanyFilter;
 import br.com.clockify.clockify_api.repository.CompanyRepository;
+import br.com.clockify.clockify_api.specification.CompanySpecification;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -40,8 +45,8 @@ public class CompanyController {
         summary = "Listar todas as Empresas",
         description = "Retorna todas as Empresas cadastradas"
     )
-    public List<Company> index() {
-        return repository.findAll();
+    public Page<Company> index(CompanyFilter filter, @PageableDefault(size = 10) Pageable pageable) {
+        return repository.findAll(CompanySpecification.withFilters(filter), pageable);
     }
 
     @PostMapping

@@ -152,10 +152,35 @@ collection:
         meta:
           id: req_a34274b1426448f9ba4e4ab6772462b9
           created: 1744207481587
-          modified: 1744207481587
+          modified: 1745259534328
           isPrivate: false
           sortKey: -1742340184156
         method: GET
+        parameters:
+          - id: pair_b0c1bffb624146ed9b09bd0e4bae620a
+            name: name
+            value: fia
+            disabled: true
+          - id: pair_b37e0abafa964cc5ab316dbefde83a2d
+            name: cnpj
+            value: "26.4"
+            disabled: true
+          - id: pair_14739da4f646401a8abbc4d985614f10
+            name: address
+            value: Paulista
+            disabled: true
+          - id: pair_a74119a0ff5d4250b0d21dda369d335b
+            name: email
+            value: "@c"
+            disabled: true
+          - id: pair_b9a14e4f604143b89495b1f3fbd5cfaa
+            name: startDate
+            value: 2018-03-15
+            disabled: false
+          - id: pair_6b0775a898fb40f09f5b20d3285a08e4
+            name: endDate
+            value: 2025-04-17
+            disabled: false
         headers:
           - name: User-Agent
             value: insomnia/10.3.1
